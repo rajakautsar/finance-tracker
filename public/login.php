@@ -30,18 +30,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 $conn->close();
 ?>
 <?php include 'header.php'; ?>
-    <h1>Login</h1>
-    <form action="login.php" method="POST">
-        <div>
-            <label>Username:</label>
-            <input type="text" name="username" required>
+    <div class="container">
+        <h1>Masuk Dulu</h1>
+        <div class="form-container">
+            <form action="login.php" method="POST">
+                <div>
+                    <label>Username:</label>
+                    <input type="text" name="username" required>
+                </div>
+                <div>
+                    <label>Password:</label>
+                    <input type="password" name="password" required>
+                </div>
+                <button type="submit">Login</button>
+            </form>
+            <p>Don't have an account? <a href="register.php">Register here</a></p>
         </div>
-        <div>
-            <label>Password:</label>
-            <input type="password" name="password" required>
-        </div>
-        <button type="submit">Login</button>
-    </form>
-    <p>Don't have an account? <a href="register.php">Register here</a></p>
+    </div>
 </body>
 </html>
