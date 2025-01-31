@@ -1,12 +1,24 @@
-<!-- filepath: /D:/finance-tracker/public/add_transaction.php -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Transaction</title>
-</head>
-<body>
+<?php
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit();
+}
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "finance_db";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+?>
+<?php include 'header.php'; ?>
     <h1>Add Transaction</h1>
     <form action="add_transaction.php" method="POST">
         <div>
@@ -29,17 +41,12 @@
         $amount = $_POST['amount'];
         $date = $_POST['date'];
         $note = $_POST['note'];
+        $user_id = $_SESSION['user_id'];
 
-        $conn = new mysqli("localhost", "root", "", "db_finance");
-
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
-
-        $sql = "INSERT INTO transactions (amount, date, note) VALUES ('$amount', '$date', '$note')";
-
+        // Insert data into database
+        $sql = "INSERT INTO transactions (amount, date, note, user_id) VALUES ('$amount', '$date', '$note', '$user_id')";
         if ($conn->query($sql) === TRUE) {
-            echo "New transaction added successfully";
+            echo "New record created successfully";
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
