@@ -29,9 +29,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 $conn->close();
 ?>
-<?php include 'header.php'; ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <?php include 'header.php'; ?>
     <div class="container">
-        <h1>Masuk Dulu</h1>
+        <h1>Login</h1>
         <div class="form-container">
             <form action="login.php" method="POST">
                 <div>
@@ -49,3 +58,68 @@ $conn->close();
     </div>
 </body>
 </html>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #e8f4ff; /* Warna latar belakang biru muda */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 8px rgba(54, 26, 218, 0.83);
+    overflow: hidden;
+    max-width: 600px; /* Ukuran diperbesar */
+    width: 90%;
+    margin-top: 60px; /* Tambahkan margin untuk memberi jarak dari navbar */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 20px 0;
+}
+
+.form-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-container label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-container input {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%; /* Pastikan input mengambil lebar penuh */
+    box-sizing: border-box; /* Pastikan padding dan border dihitung dalam lebar */
+}
+
+.form-container button {
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.form-container button:hover {
+    background-color: #555;
+}
+</style>
